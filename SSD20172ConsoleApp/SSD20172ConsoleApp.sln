@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SSD20172ConsoleApp", "SSD20172ConsoleApp\SSD20172ConsoleApp.vbproj", "{36BF5EAF-343F-44B5-9BAB-BCBFA49DFDDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36BF5EAF-343F-44B5-9BAB-BCBFA49DFDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BF5EAF-343F-44B5-9BAB-BCBFA49DFDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BF5EAF-343F-44B5-9BAB-BCBFA49DFDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BF5EAF-343F-44B5-9BAB-BCBFA49DFDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FC7E8A2-DE83-49C2-965C-72D978047608}
+	EndGlobalSection
+EndGlobal
