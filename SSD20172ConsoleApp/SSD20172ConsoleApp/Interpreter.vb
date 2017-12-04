@@ -26,7 +26,35 @@
         End If
     End Function
 
-    Public Shared Function GetValueFromModelOutputString(ByVal identifier As String, ByVal type As String)
-        Return ""
+    Public Shared Function GetValueFromModelOutputString(ByVal modelOutputString As String, ByVal identifier As String, ByVal type As String) As Decimal
+        Dim searchIndex As Integer = modelOutputString.IndexOf(identifier) + identifier.Length
+        Dim valueLength As Integer = 0
+        Dim columnNumber As Integer = 0
+        If type = "Average" Then
+            columnNumber = 1
+        ElseIf type = "Minimum" Then
+            columnNumber = 3
+        ElseIf type = "Maximum" Then
+            columnNumber = 4
+        End If
+        If columnNumber = 0 Then
+            Return 0
+        Else
+            For columnIndex = 1 To columnNumber
+                While modelOutputString.Chars(searchIndex) = " "
+                    searchIndex += 1
+                End While
+                If columnIndex = columnNumber Then
+                    While modelOutputString.Chars(searchIndex + valueLength) <> " "
+                        valueLength += 1
+                    End While
+                Else
+                    While modelOutputString.Chars(searchIndex) <> " "
+                        searchIndex += 1
+                    End While
+                End If
+            Next
+            Return Decimal.Parse(modelOutputString.Substring(searchIndex, valueLength))
+        End If
     End Function
 End Class

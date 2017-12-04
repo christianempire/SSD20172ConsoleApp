@@ -15,7 +15,7 @@
                    ByVal newAgentMeanServiceDuration As Decimal)
         'START ARENA AND THE MODEL
         ArenaApp = CType(CreateObject("Arena.Application"), Arena.Application)
-        ArenaModel = ArenaApp.Models.Open("C:\Simulation\Testing\AirportServiceModelInitial.doe")
+        ArenaModel = ArenaApp.Models.Open("C:\Simulation\AirportServiceModel.doe")
 
         'SET NUMBER OF AGENTS AND AGENT LUNCH DURATION
         Dim resourceIndex As Integer
@@ -136,9 +136,9 @@
     End Sub
 
     Public Sub Execute()
-        'ArenaModel.Go()
-        'ArenaModel.SaveAs("C:\Simulation\Testing\DumpTesting\DumpTesting.doe")
-        'ArenaApp.Quit()
+        ArenaModel.Go()
+        ArenaModel.SaveAs("C:\Simulation\Dump\Dump.doe")
+        ArenaApp.Quit()
     End Sub
 
     Public Function GetOutput() As String

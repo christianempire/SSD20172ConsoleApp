@@ -13,9 +13,22 @@
         Dim quote As String = Chr(34)
         Dim gsonString As String = "{"
         For Each Kvp As KeyValuePair(Of String, String) In Me.Attributes
-            gsonString += quote + Kvp.Key + quote + ":" + quote + Kvp.Value + quote + ","
+            gsonString += quote + Kvp.Key + quote + ":"
+            If Kvp.Value.StartsWith("{") Or Kvp.Value.StartsWith("[") Then
+                gsonString += Kvp.Value
+            Else
+                gsonString += quote + Kvp.Value + quote
+            End If
+            gsonString += ","
         Next
-        gsonString = gsonString.Substring(0, gsonString.Length - 1) + "}"
-        Return gsonString
+        Return gsonString.Substring(0, gsonString.Length - 1) + "}"
+    End Function
+
+    Public Shared Function GetArrayString(ByVal gsonArray() As Gson) As String
+        Dim arrayString As String = "["
+        For Each gson As Gson In gsonArray
+            arrayString += gson.GetString() + ","
+        Next
+        Return arrayString.Substring(0, arrayString.Length - 1) + "]"
     End Function
 End Class
