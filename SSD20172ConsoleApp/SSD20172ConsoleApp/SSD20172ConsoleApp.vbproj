@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{36BF5EAF-343F-44B5-9BAB-BCBFA49DFDDD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>SSD20172ConsoleApp.ModelExecutor</StartupObject>
+    <StartupObject>SSD20172ConsoleApp.Main</StartupObject>
     <RootNamespace>SSD20172ConsoleApp</RootNamespace>
     <AssemblyName>SSD20172ConsoleApp</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -68,7 +68,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelExecutor.vb" />
+    <Compile Include="Model.vb" />
+    <Compile Include="Interpreter.vb" />
+    <Compile Include="Gson.vb" />
+    <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -84,6 +87,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Proxy.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
