@@ -13,8 +13,27 @@
             Environment.Exit(0)
         End If
 
+        Dim failedConnectionAttempts As Integer
         Do
+            If failedConnectionAttempts = 5 Then
+                Try
+                    Dim processStartInfo As New ProcessStartInfo
+                    processStartInfo.FileName = My.Application.Info.DirectoryPath + "/SSD20172ConsoleAppRebooter.exe"
+                    Dim consoleAppRebooterProcess As Process = Process.Start(processStartInfo)
+                Catch ex As Exception
+
+                Finally
+                    failedConnectionAttempts = 0
+                End Try
+            End If
+
             Dim modelRequestString As String = Proxy.GetModelRequest()
+
+            If modelRequestString = "" Then
+                failedConnectionAttempts += 1
+            Else
+                failedConnectionAttempts = 0
+            End If
 
             If modelRequestString <> "" And Interpreter.GetValueFromModelRequestString(modelRequestString, "status") = "Submitted" Then
                 Dim inProgressRequest = New Gson()
