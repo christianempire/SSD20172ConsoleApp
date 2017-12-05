@@ -7,7 +7,7 @@
             Dim webClient As New Net.WebClient
             Return webClient.DownloadString(ApiMiddlewareRequestUrl)
         Catch ex As Exception
-            Return ""
+            Return "Error downloading the request"
         End Try
     End Function
 
@@ -17,7 +17,7 @@
             webClient.Headers.Add("Content-Type", "application/json")
             Return webClient.UploadString(ApiMiddlewareRequestUrl, "POST", payload)
         Catch ex As Exception
-            Return ""
+            Return "Error uploading the results"
         End Try
     End Function
 End Class

@@ -29,13 +29,9 @@
 
             Dim modelRequestString As String = Proxy.GetModelRequest()
 
-            If modelRequestString = "" Then
-                failedConnectionAttempts += 1
-            Else
-                failedConnectionAttempts = 0
-            End If
-
             If modelRequestString <> "" And Interpreter.GetValueFromModelRequestString(modelRequestString, "status") = "Submitted" Then
+                failedConnectionAttempts = 0
+
                 Dim inProgressRequest = New Gson()
                 inProgressRequest.AddAttribute("Status", "InProgress")
                 Proxy.PostModelRequest(inProgressRequest.GetString())
@@ -124,6 +120,10 @@
                 middlewareRequest.AddAttribute("Simulation", simulation.GetString())
 
                 Console.WriteLine(Proxy.PostModelRequest(middlewareRequest.GetString()))
+            ElseIf modelRequestString <> "" And Interpreter.GetValueFromModelRequestString(modelRequestString, "status") = "Finished" Then
+                failedConnectionAttempts = 0
+            Else
+                failedConnectionAttempts += 1
             End If
             Threading.Thread.Sleep(1000)
         Loop
